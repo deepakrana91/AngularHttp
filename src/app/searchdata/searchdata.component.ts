@@ -23,12 +23,17 @@ export class SearchdataComponent implements OnInit {
 
   //Gettting the data from the server using the http.get fuction and later subscribing the value here and store it
   // to the userDataAray
+  //onGet function update now using the .map fuction to convert the obect into array and then assigning 
+  // it to userDataArray to display
 
   onGet(){
     this.savedDataService.getUserData()
     .subscribe(
-      (data:any[]) => this.userDataArray=data
-
+      (data:any[]) => {
+        let objs = Object.keys(data).map(key => data[key]);
+        this.userDataArray=objs;
+    
+      }
     );
 
   }
