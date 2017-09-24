@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8">
+      <form (ngSubmit)="onSave()" #f="ngForm">
+        <div class="form-group">
+          <label for="fname">First Name</label>
+          <input type="text" 
+          class="form-control"
+          ngModel 
+          required
+          name="fname"
+          id="fname"
+          #fname="ngModel">
+        </div>
+        <span class="help-block" *ngIf="!fname.valid && fname.touched">Please enter valid name</span>
+        <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" 
+            name="lname"
+            required
+            class="form-control" 
+            ngModel
+            #lname="ngModel"
+            id="lname">
+        </div>
+        <span class="help-block" *ngIf="!lname.valid && lname.touched">Please enter Your Age</span>
+        <div class="form-group">
+              <label for="email">Age</label>
+              <input type="number" 
+              required
+              name="age"
+              maxlength="3"
+              class="form-control" 
+              ngModel
+              #age="ngModel"
+              id="age">
+        </div>
+        <span class="help-block" *ngIf="!age.valid && age.touched">Please enter valid age</span>
+        <div class="form-group">
+          <label for="date">Date</label>
+          <input type="date" 
+          required
+          name="date"
+          class="form-control" 
+          ngModel
+          id="date">
+    </div>
+        <div class="form-group">
+            <select name="prefix" 
+            id="prefix" 
+            name="prefix"
+            class="form-control"
+            [ngModel]="defaultDesignation"
+            ngModel>
+                <option [ngValue]="item.value" *ngFor="let item of genderArray">{{item.value}}</option>
+            </select>
+        </div>
+        
+        <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+        <br><br>
+        <!-- <button class="btn btn-success" type="button" (click)="onSave()">Save User Data</button> -->
+      </form>      
+    </div>
+  </div>
+</div>
+    
